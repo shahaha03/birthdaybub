@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Bubbub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        .font-cursive { font-family: 'Dancing Script', cursive; }
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .font-sans-custom { font-family: 'Poppins', sans-serif; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F5EBE6 0%, #E8DFD8 50%, #DDD3CA 100%);
+            background-attachment: fixed;
+            color: #2D2D2D;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(220, 210, 200, 0.6);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .polaroid-tape {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 90px;
+            height: 24px;
+            background-color: rgba(220, 210, 200, 0.8);
+            backdrop-filter: blur(2px);
+            border: 1px dashed rgba(100, 100, 100, 0.3);
+            z-index: 20;
+        }
+
+        .nav-link.active {
+            color: #111111;
+            font-weight: 600;
+            border-bottom: 2px solid #111111;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5ebe6; }
+        ::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #888; }
+    </style>
+</head>
+<body class="relative min-h-screen text-gray-800">
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="flex items-center space-x-2 text-stone-900 font-serif-custom text-xl font-bold tracking-wide">
+                 <span>For My Princess</span>
+                </a>
+
+                <div class="hidden md:flex space-x-8 font-medium text-stone-600 text-sm">
+                    <a href="#home" class="nav-link hover:text-stone-900 transition-colors py-1">Home</a>
+                    <a href="#letters" class="nav-link hover:text-stone-900 transition-colors py-1">Letters</a>
+                    <a href="#gallery" class="nav-link hover:text-stone-900 transition-colors py-1">Memories</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-stone-700 hover:text-stone-900 focus:outline-none p-2" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass-nav px-6 pt-3 pb-5 space-y-3 border-t border-stone-200 shadow-lg">
+            <a href="#home" class="block py-2 text-stone-700 hover:text-stone-900 font-medium mobile-link border-b border-stone-100">Home</a>
+            <a href="#letters" class="block py-2 text-stone-700 hover:text-stone-900 font-medium mobile-link border-b border-stone-100">Letters</a>
+            <a href="#gallery" class="block py-2 text-stone-700 hover:text-stone-900 font-medium mobile-link">Memories</a>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24 pb-12 relative z-10">
+        <div class="glass-card p-8 md:p-14 rounded-3xl max-w-3xl w-full animate-float relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-stone-200/50 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="mb-4 inline-block bg-stone-100 text-stone-700 border border-stone-300/60 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase">
+                Celebrating Your Special Day
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-serif-custom font-bold text-stone-900 mb-4 leading-tight">
+                Happy Birthday, <br>
+                <span class="text-stone-800 font-cursive text-5xl md:text-7xl block mt-2">My Bubbub</span>
+            </h1>
+
+            <p class="text-stone-600 text-base md:text-lg max-w-xl mx-auto mb-8 font-light leading-relaxed">
+                To the person who makes every day brighter, today is all about you. Words can't capture how much you mean to me, but I hope this little space brings a warm smile to your face.
+            </p>
+
+            <button id="wish-btn" onclick="triggerCelebration()" class="bg-stone-900 hover:bg-stone-800 text-white font-medium py-3.5 px-8 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 mx-auto active:scale-95">
+                <i class="fa-solid fa-sparkles text-sm"></i>
+                <span>Click for a Birthday Surprise</span>
+            </button>
+        </div>
+        
+        <a href="#letters" class="mt-12 text-stone-400 hover:text-stone-700 animate-bounce transition-colors" aria-label="Scroll to letters">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </a>
+    </section>
+
+    <!-- 2. LETTERS SECTION (#letters) -->
+    <section id="letters" class="py-24 px-4 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-14">
+            <span class="text-stone-600 text-xs font-semibold tracking-widest uppercase bg-white/80 border border-stone-200 px-3 py-1 rounded-full">Heartfelt Messages</span>
+            <h2 class="text-3xl md:text-5xl font-serif-custom font-bold text-stone-900 mt-3">Open When Letters</h2>
+            <p class="text-stone-500 mt-2 text-sm md:text-base font-light">Click on an envelope whenever you need a gentle reminder of my love.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Envelope 1 -->
+            <div onclick="openLetter(1)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">Open Right Now</h3>
+                <p class="text-xs text-stone-500 text-center font-light">A special birthday message welcoming you to your website.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+
+            <!-- Envelope 2 -->
+            <div onclick="openLetter(2)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">When You Miss Me</h3>
+                <p class="text-xs text-stone-500 text-center font-light">For the moments when distance feels a little too far.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+
+            <!-- Envelope 3 -->
+            <div onclick="openLetter(3)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">When You Feel Sad</h3>
+                <p class="text-xs text-stone-500 text-center font-light">A gentle warm hug in words to brighten up a gloomy day.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+
+            <!-- Envelope 4 -->
+            <div onclick="openLetter(4)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">On Your Birthday</h3>
+                <p class="text-xs text-stone-500 text-center font-light">Since I can’t be there to celebrate with you, let this little letter be my way of being there.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+
+            <!-- Envelope 5 -->
+            <div onclick="openLetter(5)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-cloud-moon"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">Can't Sleep</h3>
+                <p class="text-xs text-stone-500 text-center font-light">Late night soothing thoughts for sweet, peaceful dreams.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+
+            <!-- Envelope 6 -->
+            <div onclick="openLetter(6)" class="glass-card p-6 rounded-2xl cursor-pointer transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border-t-4 border-stone-700 group">
+                <div class="text-stone-700 text-3xl mb-3 text-center group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 text-center mb-2">100 Reason Why I Love You</h3>
+                <p class="text-xs text-stone-500 text-center font-light">A list of reasons why you are so very special to me.</p>
+                <div class="mt-5 text-center">
+                    <span class="inline-block bg-stone-100 text-stone-800 text-xs font-semibold px-4 py-1.5 rounded-full group-hover:bg-stone-900 group-hover:text-white transition">Read Letter</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GALLERY SECTION (#gallery) -->
+    <section id="gallery" class="py-24 px-4 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-14">
+            <span class="text-stone-600 text-xs font-semibold tracking-widest uppercase bg-white/80 border border-stone-200 px-3 py-1 rounded-full">Captured Moments</span>
+            <h2 class="text-3xl md:text-5xl font-serif-custom font-bold text-stone-900 mt-3">Memory Gallery</h2>
+            <p class="text-stone-500 mt-2 text-sm md:text-base font-light">A few snapshots of my favorite times spent with you.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- Polaroid 1 -->
+            <div onclick="openImageModal('firstdate.jpg', 'Our First Date', 'Feb 14')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="firstdate.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">First Date</p>  
+                    <span class="text-[10px] text-stone-400 font-mono">Feb 14</span>
+                </div>
+            </div>
+
+            <!-- Polaroid 2 -->
+            <div onclick="openImageModal('bahaypic.jpg', 'Our Little Moments', 'March 1')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="bahaypic.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">At Your Place</p>
+                    <span class="text-[10px] text-stone-400 font-mono">March 1</span>
+                </div>
+            </div>
+
+            <!-- Polaroid 3 -->
+            <div onclick="openImageModal('cutie.jpg', 'Cutie Tagum Date', 'May 2')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="cutie.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">Tagum Date</p>
+                    <span class="text-[10px] text-stone-400 font-mono">May 2</span>
+                </div>
+            </div>
+
+            <!-- Polaroid 4 -->
+            <div onclick="openImageModal('better.jpg', 'Celebrating My Birthday With You', 'March 27')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="better.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">My Birthday, With You</p>
+                    <span class="text-[10px] text-stone-400 font-mono">March 27</span>
+                </div>
+            </div>
+
+            <!-- Polaroid 5 -->
+            <div onclick="openImageModal('moviemarathon.jpg', 'Our Virtual Movie Date', 'Jan 27')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="moviemarathon.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">Movie Date</p>
+                    <span class="text-[10px] text-stone-400 font-mono">Jan 27</span>
+                </div>
+            </div>
+
+            <!-- Polaroid 6 -->
+            <div onclick="openImageModal('cafe.jpg', 'Hojicha & Strawberry Matcha', 'Jun 5')" class="relative bg-white p-4 rounded-sm shadow-md hover:shadow-2xl transition-all duration-300 transform hover:rotate-1 hover:scale-105 cursor-pointer border border-stone-200 group">
+                <div class="polaroid-tape"></div>
+                <div class="h-64 overflow-hidden rounded-sm mb-3">
+                    <img src="cafe.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-center px-1">
+                    <p class="font-serif-custom text-lg text-stone-800">cafe & restaurant</p>
+                    <span class="text-[10px] text-stone-400 font-mono">Jun 5</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-stone-500 text-xs relative z-10 border-t border-stone-200/80 bg-white/40">
+        <p class="mb-2 font-serif-custom text-lg text-stone-800">I love you so much</p>
+        <p>Crafted with endless love for your special day | Happy Birthday</p>
+    </footer>
+
+    <!-- Letter Modal Pop-up -->
+    <div id="letter-modal" class="fixed inset-0 bg-stone-900/40 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl border border-stone-200 transform transition-all scale-95" id="letter-modal-content">
+            <button onclick="closeLetterModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-lg w-8 h-8 rounded-full flex items-center justify-center bg-stone-100 hover:bg-stone-200 transition" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-stone-700 text-3xl mb-3" id="modal-letter-icon">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <h3 id="modal-letter-title" class="text-2xl font-serif-custom font-bold text-stone-900 mb-4">Letter Title</h3>
+            <div id="modal-letter-body" class="text-stone-600 leading-relaxed font-light text-sm md:text-base space-y-3 max-h-96 overflow-y-auto pr-2">
+                <!-- Content inserted dynamically -->
+            </div>
+            <div class="mt-6 text-right">
+                <button onclick="closeLetterModal()" class="bg-stone-900 text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-stone-800 transition shadow-sm">Close Letter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Preview Lightbox Modal -->
+    <div id="image-modal" class="fixed inset-0 bg-stone-900/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeImageModal()">
+        <div class="max-w-3xl w-full text-center relative" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white text-2xl hover:text-stone-300 transition" aria-label="Close Lightbox">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="preview-image" src="" alt="Preview" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl object-contain">
+            <p id="preview-caption" class="text-white font-serif-custom text-xl mt-4"></p>
+            <p id="preview-date" class="text-stone-300 text-xs font-mono mt-1"></p>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // --- 1. Mobile Navbar Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 2. Active Navigation Highlight on Scroll ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- 3. Confetti Celebration Trigger ---
+        function triggerCelebration() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#2d2d2d', '#78716c', '#d6d3d1', '#a8a29e', '#e7e5e4']
+            });
+        }
+
+        // --- 4. "Open When..." Letters Logic ---
+        const lettersData = {
+            1: {
+                title: "Open Right Now",
+                icon: "fa-solid fa-envelope-open-text",
+                body: "Happy birthday, my bubub! I hope you like this small gift for you. I know I’ve created a website for you before, but this time, I wanted to create something unique and special just for you to celebrate your big day. I hope you like reading through these sections. I love you, bub, always."
+            },
+            2: {
+                title: "When You Miss Me",
+                icon: "fa-solid fa-heart",
+                body: "Whenever you miss me, imagine the times we’re in your bed, hugging, or playing Roblox together, even though sometimes you get irritated with me lol. Even when we’re apart, nothing changes how much I love you. I hope those little memories make you feel a little closer to me."
+            },
+            3: {
+                title: "When You Feel Sad",
+                icon: "fa-solid fa-sun",
+                body: "Inhale and exhale, bub. You always say that to me every time I get emotional, and because of that, it helps me calm down. So, you do that too, bub. Always remember how strong, caring, and amazing you are. I’m always here for you, bub. You can talk to me about anything, and I’ll always be here to listen to your rants. I love listening to you, even when you just need to let everything out."
+            },
+            4: {
+                title: "On Your Birthday",
+                icon: "fa-solid fa-moon",
+                body: "First birthday with you! I hope you enjoy your day and don’t get stressed out about your age. You’re still young, bub, and you have so much time to grow, experience new things, and achieve everything you want in life. <br> <p> I may not be there with you on this special day, but I hope this little letter makes you feel my presence. I wish I could celebrate with you, make you laugh, annoy you a little, and spend the whole day by your side. I’m really happy that I get to celebrate another special moment with you. <br> <p> Thank you for letting me be part of your life and for giving me so many memories to cherish. I hope this new year of your life brings you more happiness, peace, adventures, and beautiful moments. Whatever happens, I’ll always be cheering for you and supporting you. Happy birthday, my bubub! I love you so much."
+            },
+            5: {
+                title: "Can't Sleep",
+                icon: "fa-solid fa-cloud-moon",
+                body: "If you’re having a hard time sleeping, you can always call me. I know we always call at night, so if there’s ever a time when we can’t call and you’re having trouble falling asleep, just remember that I’m still here with you in my own little way. <br> <p> And I can’t be there to hug you myself, I’ll let my guardian angel go there for me to give you a warm hug and a little kiss goodnight.  So close your eyes, relax, and imagine that I’m right there beside you. Sleep well, bub. I love you."
+            },
+            6: {
+                title: "100 Reason Why I Love You",
+                icon: "fa-solid fa-star",
+                body: "1. Your adorable silent laugh.<br>2. Your smile.<br>3. Your smell.<br>4. Your voice.<br>5. The way you look at me.<br>6. The way you hug me.<br>7. The way you make me feel special.<br>8. The way you make me feel cared for.<br>9. The way you worry.<br>10. Being a crybaby.<br>11. The way you say “I love you.”<br>12. The way you say “I miss you.”<br>13. The way you get irritated when you need to repeat what you said because I can’t hear you.<br>14. Your style.<br>15. Your hair.<br>16. Your eyes.<br>17. Your nails.<br>18. Your hands, especially when you hold mine.<br>19. Your kisses.<br>20. Your cute little reactions.<br>21. The way you give me advice.<br>22. The way you notice things when we’re together.<br>23. The way you rant about your workmates.<br>24. Your chika.<br>25. Your effort to make me feel loved.<br>26. Your sacrifices.<br>27. Your effort just to see me.<br>28. Your effort to spend time with me.<br>29. Your jokes.<br>30. How you always reassure me.<br>31. Your patience with me.<br>32. Your comfort.<br>33. Your lips.<br>34. Your touch.<br>35. Your taste.<br>36. Your communication.<br>37. The way you stay calm.<br>38. How you don’t want us to fight.<br>39. Gosh, your personality.<br>40. Being there for me.<br>41. Your obsession with hojicha.<br>42. How organized you are.<br>43. Your sleepy voice.<br>44. How you like to try new restaurants.<br>45. How much of a foodie you are.<br>46. Being a cute maldita.<br>47. Letting me try your food.<br>48. Your baking.<br>49. Your music taste.<br>50. Watching horror movies with me even though you get scared easily.<br>51. Giving me meds.<br>52. You trying to get me to stop vaping.<br>53. Always checking on me.<br>54. Always making sure I’m okay.<br>55. Helping me stay organized.<br>56. Helping me plan healthy meals.<br>57. Updating me.<br>58. Reminding me how much you love me.<br>59. Walking together.<br>60. Us talking.<br>61. How good of a daughter you are.<br>62. How you always say “ingat” when I go outside.<br>63. Your soul.<br>64. Calling me baby.<br>65. Calling me bubz.<br>66. Calling me bebeq.<br>67. Being conyo.<br>68. Your typings.<br>69. I love how you choose to stay even when your parents don’t support our relationship.<br>70. Our bebe time.<br>71. You sending me selfies.<br>72. Being considerate.<br>73. Being the best cousin.<br>74. Your goals.<br>75. Your random little habits.<br>76. The way you tell me about your plans with me when you get your freedom.<br>77. How you don’t leave me on seen.<br>78. How you always want to fix things because you don’t want us to be upset with each other.<br>79. Your gifts.<br>80. Your cookies.<br>81. Sending me reels.<br>82. Your cute voice messages.<br>83. Your pouty selfies.<br>84. Being so hot.<br>85. Complimenting me.<br>86. You liking my cornrows.<br>87. Believing in me.<br>88. The way you get pikon.<br>89. The way you appreciate my gifts.<br>90. You kissing my forehead.<br>91. Your happy tears.<br>92. Your cooking skills.<br>93. How good you are at making hojicha and other drinks.<br>94. How you want me to sit beside you.<br>95. The way you organize your plate after you eat.<br>96. The way you remind me to organize my spoon and fork after I eat.<br>97. Random libre.<br>98. Kissing your hand.<br>99. Being comfortable enough to tell me about your insecurities.<br>100. The way you see the best in me even when I look down on myself."
+            }
+        };
+
+        function openLetter(id) {
+            const data = lettersData[id];
+            if (!data) return;
+
+            document.getElementById('modal-letter-title').innerText = data.title;
+            document.getElementById('modal-letter-icon').className = 'text-stone-700 text-3xl mb-3 ' + data.icon;
+            document.getElementById('modal-letter-body').innerHTML = data.body;
+
+            const modal = document.getElementById('letter-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeLetterModal() {
+            document.getElementById('letter-modal').classList.add('hidden');
+        }
+
+        // --- 5. Lightbox Gallery Preview ---
+        function openImageModal(src, caption, date) {
+            document.getElementById('preview-image').src = src;
+            document.getElementById('preview-caption').innerText = caption;
+            document.getElementById('preview-date').innerText = date;
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
